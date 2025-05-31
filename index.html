@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для моєї лапки ❤️</title>
+    <style>
+        /* Глобальні стилі */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c0346, #5a0a7e);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Контейнер з контентом */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Заголовок */
+        h1 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+            animation: glow 2s infinite alternate;
+        }
+        
+        /* Основне повідомлення */
+        .message {
+            background: rgba(106, 13, 173, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+            border: 1px solid #8a2be2;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.7);
+        }
+        
+        .message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: rotate 15s linear infinite;
+            z-index: -1;
+        }
+        
+        .message-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .special {
+            color: #ff69b4;
+            font-weight: bold;
+            font-size: 2.2rem;
+            display: inline-block;
+            animation: bounce 1s infinite alternate;
+        }
+        
+        /* Анімовані кнопки */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #8a2be2, #da70d6);
+            color: white;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Футер */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        /* Анімації */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 105, 180, 0.9), 0 0 30px rgba(255, 20, 147, 0.6);
+            }
+        }
+        
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            40% {
+                transform: scale(1);
+            }
+            60% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Літаючі сердечка */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 32px;
+            border-radius: 20px 20px 0 0;
+            background: #ff69b4;
+        }
+        
+        .heart::before {
+            left: 20px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        /* Спеціальні елементи */
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            margin: 2rem auto;
+            border-radius: 50%;
+            border: 5px solid #8a2be2;
+            padding: 10px;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.7);
+            position: relative;
+            animation: pulse 3s infinite;
+            overflow: hidden;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            transform: translateX(10px); /* Зміщення фото вправо на 10px */
+        }
+        
+        .photo-frame:hover img {
+            transform: translateX(10px) scale(1.1); /* Додаємо зміщення до масштабування */
+        }
+        
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff69b4, #8a2be2, #da70d6);
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+            opacity: 0.7;
+        }
+        
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Додаткові декоративні елементи */
+        .decoration {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 2px dashed #da70d6;
+            animation: rotate 30s linear infinite;
+        }
+        
+        .circle-large {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            right: -200px;
+        }
+        
+        .circle-medium {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            left: -150px;
+        }
+        
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .message-text {
+                font-size: 1.4rem;
+            }
+            
+            .special {
+                font-size: 1.8rem;
+            }
+            
+            .photo-frame {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Декоративні елементи -->
+    <div class="decoration circle circle-large"></div>
+    <div class="decoration circle circle-medium"></div>
+    
+    <!-- Контейнер з основним контентом -->
+    <div class="container">
+        <h1>Для Тебе ❤️</h1>
+        
+        <!-- Фото -->
+        <div class="photo-frame">
+            <div class="sparkles" id="sparkles-container"></div>
+            <!-- Тут можна додати фото -->
+            <img src="https://via.placeholder.com/250x250/8a2be2/ffffff?text=Тут+Твоє+Фото" alt="Моя лапка">
+        </div>
+        
+        <!-- Основне повідомлення -->
+        <div class="message">
+            <p class="message-text">
+                Кожен день з тобою - це щастя, яке я <span class="special">ціную</span> більше за все на світі.
+            </p>
+            <p class="message-text">
+                Ти - моє <span class="special">сонце</span>, моя <span class="special">радість</span>, моя <span class="special">любов</span>.
+            </p>
+            <p class="message-text">
+                <span class="special">Я тебе дуже ціную, моя лапка!</span> ❤️
+            </p>
+        </div>
+        
+        <!-- Кнопки -->
+        <div class="buttons">
+            <button class="btn btn-primary" id="hug-btn">Обійняти</button>
+            <button class="btn btn-secondary" id="kiss-btn">Поцілувати</button>
+        </div>
+    </div>
+    
+    <footer>
+        Створено з любов'ю ❤️<br>
+        © 2023 Для найкращої дівчини у світі
+    </footer>
+    
+    <!-- Літаючі сердечка -->
+    <div id="hearts-container"></div>
+    
+    <script>
+        // Генерація літаючих сердечок
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const colors = ['#ff69b4', '#da70d6', '#8a2be2', '#ff1493', '#ba55d3'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                
+                // Випадкові параметри
+                const size = Math.random() * 20 + 10;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 3 + 3;
+                
+                // Застосування стилів
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.left = `${left}vw`;
+                heart.style.top = `${top}vh`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                
+                // Колір
+                heart.style.setProperty('--heart-color', color);
+                
+                // Додавання псевдоелементів
+                const before = document.createElement('div');
+                before.style.position = 'absolute';
+                before.style.top = '0';
+                before.style.left = `${size/2}px`;
+                before.style.width = `${size/2}px`;
+                before.style.height = `${size}px`;
+                before.style.borderRadius = `${size/2}px ${size/2}px 0 0`;
+                before.style.background = color;
+                before.style.transform = 'rotate(-45deg)';
+                before.style.transformOrigin = '0 100%';
+                
+                const after = document.createElement('div');
+                after.style.position = 'absolute';
+                after.style.top = '0';
+                after.style.left = '0';
+                after.style.width = `${size/2}px`;
+                after.style.height = `${size}px`;
+                after.style.borderRadius = `${size/2}px ${size/2}px 0 0`;
+                after.style.background = color;
+                after.style.transform = 'rotate(45deg)';
+                after.style.transformOrigin = '100% 100%';
+                
+                heart.appendChild(before);
+                heart.appendChild(after);
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Генерація блискіток
+        function createSparkles() {
+            const container = document.getElementById('sparkles-container');
+            
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                
+                // Випадкові параметри
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 2;
+                const duration = Math.random() * 1 + 1;
+                const size = Math.random() * 3 + 2;
+                
+                // Застосування стилів
+                sparkle.style.left = `${left}%`;
+                sparkle.style.top = `${top}%`;
+                sparkle.style.animationDelay = `${delay}s`;
+                sparkle.style.animationDuration = `${duration}s`;
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                
+                container.appendChild(sparkle);
+            }
+        }
+        
+        // Обробники подій для кнопок
+        document.getElementById('hug-btn').addEventListener('click', function() {
+            alert('🤗 Обіймаю тебе міцно-міцно! Ти найкраща!');
+            createHeartExplosion();
+        });
+        
+        document.getElementById('kiss-btn').addEventListener('click', function() {
+            alert('😘 Посилаю тобі мільйон поцілунків! Люблю тебе!');
+            createHeartRain();
+        });
+        
+        // Ефект вибуху сердечок
+        function createHeartExplosion() {
+            const container = document.getElementById('hearts-container');
+            const colors = ['#ff69b4', '#da70d6', '#8a2be2', '#ff1493', '#ba55d3'];
+            
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.position = 'fixed';
+                heart.style.top = '50%';
+                heart.style.left = '50%';
+                heart.style.zIndex = '1000';
+                
+                // Випадкові параметри
+                const size = Math.random() * 30 + 10;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 5 + 2;
+                const distance = Math.random() * 200 + 100;
+                
+                // Застосування стилів
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                
+                // Колір
+                heart.style.setProperty('--heart-color', color);
+                
+                // Анімація
+                const animation = heart.animate([
+                    { 
+                        transform: 'translate(-50%, -50%) scale(1)',
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
+                        opacity: 0 
+                    }
+                ], {
+                    duration: 1000,
+                    easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+                
+                // Видалення після анімації
+                animation.onfinish = () => heart.remove();
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Ефект дощу з сердечок
+        function createHeartRain() {
+            const container = document.getElementById('hearts-container');
+            const colors = ['#ff69b4', '#da70d6', '#8a2be2', '#ff1493', '#ba55d3'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.position = 'fixed';
+                heart.style.top = '-50px';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.zIndex = '1000';
+                
+                // Випадкові параметри
+                const size = Math.random() * 25 + 10;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 2000 + 2000;
+                const delay = Math.random() * 1000;
+                
+                // Застосування стилів
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                
+                // Колір
+                heart.style.setProperty('--heart-color', color);
+                
+                // Анімація
+                const animation = heart.animate([
+                    { 
+                        transform: 'translateY(0) rotate(0deg)',
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translateY(calc(100vh + 50px)) rotate(${Math.random() * 360}deg)`,
+                        opacity: 0.5 
+                    }
+                ], {
+                    duration: duration,
+                    delay: delay,
+                    easing: 'linear'
+                });
+                
+                // Видалення після анімації
+                animation.onfinish = () => heart.remove();
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Ініціалізація при завантаженні сторінки
+        window.onload = function() {
+            createHearts();
+            createSparkles();
+            
+            // Додаткові анімації при наведенні на повідомлення
+            const message = document.querySelector('.message');
+            const specialWords = document.querySelectorAll('.special');
+            
+            message.addEventListener('mouseenter', () => {
+                specialWords.forEach(word => {
+                    word.style.animation = 'heartbeat 1s infinite';
+                });
+            });
+            
+            message.addEventListener('mouseleave', () => {
+                specialWords.forEach(word => {
+                    word.style.animation = 'bounce 1s infinite alternate';
+                });
+            });
+        };
+    </script>
+</body>
+</html>
